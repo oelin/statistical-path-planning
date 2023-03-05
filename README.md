@@ -2,7 +2,7 @@
 
 **[Introduction](#introduction) | [Method](#method) | [Evaluation](#evaluation) | [Conclusion](#conclusion)**
 
-Abstract: We train a generative model to solve path planning problems by mimicing the behaviour of conflict-based search (CBS) in unknown environments. We demonstrate that the features proposed by [[Qingbao et al., 2020]](#references) are highly correlated with actions taken by CBS and that this relationship is mostly linear.
+Abstract: We train a generative model to solve path planning problems by mimicing the behaviour of conflict-based search (CBS) in unknown environments. We demonstrate that the features proposed by [[Qingbao et al., 2020]](#references) have a strong linear relationship to actions taken by CBS.
 
 ![](https://github.com/oelin/generative-path-planning/blob/main/images/example.gif)
 
