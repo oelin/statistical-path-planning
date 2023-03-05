@@ -4,6 +4,9 @@
 
 We train a generative model to solve path planning problems by mimicing the behaviour of conflict-based search (CBS) in unknown environments. We demonstrate that the features proposed in [[1]](#references) are highly correlated with actions taken by CBS and that this relationship is primarily linear.
 
+![](https://github.com/oelin/generative-path-planning/blob/main/images/example.gif)
+
+
 ## Installation
 
 This project is packaged using [Poetry](https://python-poetry.org/) and can be easily installed with `pip`.
