@@ -2,7 +2,7 @@
 
 **[Introduction](#introduction) | [Method](#method) | [Evaluation](#evaluation) | [Conclusion](#conclusion)**
 
-We train a generative model to solve path planning problems by mimicing the behaviour of conflict-based search (CBS) in unknown environments. We demonstrate that the features proposed in [[1]](#references) are highly correlated with actions taken by CBS and that this relationship is primarily linear.
+Abstract: We train a generative model to solve path planning problems by mimicing the behaviour of conflict-based search (CBS) in unknown environments. We demonstrate that the features proposed by [[Qingbao et al., 2020]](#references) are highly correlated with actions taken by CBS and that this relationship is mostly linear.
 
 ![](https://github.com/oelin/generative-path-planning/blob/main/images/example.gif)
 
@@ -26,19 +26,20 @@ Run `gpp help` for information on how to train, test and sample from our models.
 
 ## Introduction
 
-Multi-agent path planning (MPP) is the task of finding efficient, collision-free paths for mutliple agents within a shared environment. It has numerous applications in fields such as search and resue [[2]](#references), UAV navigation [[3]](#references), and game design [[4]](#references). Conflict-based search (CBS), propsed by [(Sharon et al., 2015)](#references), is an efficient, optimal MPP algorithm which divides the problem into two levels of abstraction.
+Multi-agent path planning (MPP) is the task of finding efficient, collision-free paths for mutliple agents within a shared environment. It has numerous applications in fields such as search and resue [[2]](#references), UAV navigation [[3]](#references), and game design [[4]](#references). Conflict-based search (CBS), propsed by [[Sharon et al., 2015]](#references), is an efficient, optimal MPP algorithm which divides the problem into two levels of abstraction.
 
-While CBS is highly effective, it requires complete knowledge of the target area to find solutions. This is often infeasible for real-world scenarios featuring unknown or dynamic environments. To address this limitation, [(Qingbao et al., 2020)](#references) propose a decentralized variant of CBS using graph neural networks (GNNs) and imitation learning. They train a generative model to approximate the distribution of CBS solutions, *conditional* on each agent's local field of view (FOV).
+While CBS is highly effective, it requires complete knowledge of the target area to find solutions. This is often infeasible for real-world scenarios featuring unknown or dynamic environments. To address this limitation, [[Qingbao et al., 2020]](#references) propose a decentralized variant of CBS using graph neural networks (GNNs) and imitation learning. They train a generative model to approximate the distribution of CBS solutions, *conditional* on each agent's local field of view (FOV).
 
 We take a similar approach in this work however find that GNNs are *not required* to approximate CBS effecitvely. We find that even linear models can achieve above 93% accuracy in predicting the actions of CBS. These models may be useful for applications involving agents with very limited hardware resources.
 
 
 ## Method
 
-Borrowing from [[1]](#references), we cast the problem of mimicing CBS to a supervised learning task in which we wish to predict the action taken by an agent given its local FOV. Note each labelled example is assumed to be i.i.d. Although this assumption may be false, the success of [[1]](#references) suggests that modelling temporal dependencies is not required to achieve high accuracy. 
+Borrowing from [[1]](#references), we cast the problem of mimicing CBS to a supervised learning task in which we wish to predict the action taken by an agent given its local FOV. Note each labelled example is assumed to be i.i.d. Although this assumption may be false, the success of [[1]](#references) suggests that modelling temporal dependencies isn't neccessary to achieve high accuracy. 
 
-Using this framework, we compile a large dataset containing CBS solutions to path planning problems on 20x20 maps [[5]](#references). Specifically, we train a three layer CNN, a logistic regression model and a naive bayes classifier (NBC).
+We compile a large dataset of CBS solutions amounting to over 4 million labelled examples. We then train three separate models to learn the relationship between an agent's FOV and the action it takes when controlled by CBS.
 
+containing CBS solutions to path planning problems on 20x20 maps [[5]](#references). We then train a three models to predict the actions taken by an agent given its FOV. Specifically, we train a three layer CNN, a logistic regression model and a naive bayes classifier (NBC).
 
 ## Evaluation
 
