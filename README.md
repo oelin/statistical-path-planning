@@ -1,42 +1,146 @@
 # Generative Path Planning
 
-**[Introduction](#introduction) | [Models](#models) | [Training](#training) | [Evaluation](#evaluation) | [Conclusion](#conclusion)**
+**[Introduction](#introduction) | [Method](#method) | [Evaluation](#evaluation) | [Conclusion](#conclusion)**
 
-We train a generative model to solve path planning problems by mimicing the behaviour of conflict-based search (CBS) in unknown environments. We demonstrate that the features proposed in [[1]](#) are highly informative towards predicting the actions of CBS and that this relationship is mostly linear in nature.
-
+We train a generative model to solve path planning problems by mimicing the behaviour of conflict-based search (CBS) in unknown environments. We demonstrate that the features proposed in [[1]](#references) are highly correlated with actions taken by CBS and that this relationship is primarily linear.
 
 ## Installation
 
 This project is packaged using [Poetry](https://python-poetry.org/) and can be easily installed with `pip`.
 
 ```sh
-pip install git+https://github.com/oelin/generative-path-finding
+pip install git+https://github.com/oelin/generative-path-planning
 ```
 
-We recommend installing to a virtual environment, for example using `venv`:
+We recommend installing to a virtual environment, for example using `venv`. To verify your installation, try running `gpp version`. You should see something like this:
 
 ```sh
-python -m venv venv
-
-source venv/bin/activate
+gpp version 1.0.0
 ```
 
-To verify that the installation was successful, try running `gpf version`. You should see something like this:
-
-```sh
-gpf version 1.0.0
-```
-
-Then run `gpf help` for more information on how to train, test and sample from our models.
+Run `gpp help` for information on how to train, test and sample from our models.
 
 
 ## Introduction
 
-Multi-agent path planning (MPP) is the task of finding efficient, collision-free paths for mutliple agents within a shared environment. It has numerous applications in fields such as search and resue [[2]](#), UAV navigation [[3]](#), and game design [[4]](#). Conflict-based search (CBS), propsed by [(Sharon et al., 2015)](#), is an efficient, optimal MPP algorithm which divides the problem into two levels of abstraction.
+Multi-agent path planning (MPP) is the task of finding efficient, collision-free paths for mutliple agents within a shared environment. It has numerous applications in fields such as search and resue [[2]](#references), UAV navigation [[3]](#references), and game design [[4]](#references). Conflict-based search (CBS), propsed by [(Sharon et al., 2015)](#references), is an efficient, optimal MPP algorithm which divides the problem into two levels of abstraction.
 
-While CBS is highly effective, it requires complete knowledge of the target area to find solutions. This is often infeasible for real-world scenarios featuring unknown or dynamic environments. To address this limitation, [(Qingbao et al., 2020)](#) propose a decentralized variant of CBS using graph neural networks (GNNs) and imitation learning. They train a generative model to approximate the distribution of CBS solutions, *conditional* on each agent's local field of view (FOV).
+While CBS is highly effective, it requires complete knowledge of the target area to find solutions. This is often infeasible for real-world scenarios featuring unknown or dynamic environments. To address this limitation, [(Qingbao et al., 2020)](#references) propose a decentralized variant of CBS using graph neural networks (GNNs) and imitation learning. They train a generative model to approximate the distribution of CBS solutions, *conditional* on each agent's local field of view (FOV).
 
-We take a similar approach in this work however find that GNNs are *not required* to approximate CBS effecitvely. We find that even linear models can achieve above 93% accuracy in predicting the actions of CBS. Such models are useful for scenarios involving agents with limited hardware.
+We take a similar approach in this work however find that GNNs are *not required* to approximate CBS effecitvely. We find that even linear models can achieve above 93% accuracy in predicting the actions of CBS. These models may be useful for applications involving agents with very limited hardware resources.
+
+
+## Method
+
+Borrowing from [[1]](#references), we cast the problem of mimicing CBS to a supervised learning task in which we wish to predict the action $y_t$ taken by an agent, given its local FOV $X_t$. Note each example $(X_t, y_t)$ is assumed to be i.i.d. Although this assumption may be false, the success of [[1]](#references) suggests modelling of temporal dependencies is unneccessary to achieve high accuracy. 
+
+Using this formulation, we compile a large dataset of CBS solutions [[5]](#references) and train several models to 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+We compile a large dataset of CBS solutions 
 
 
 
