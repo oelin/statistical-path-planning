@@ -32,115 +32,14 @@ We take a similar approach in this work however find that GNNs are *not required
 
 ## Method
 
-Borrowing from [[1]](#references), we cast the problem of mimicing CBS to a supervised learning task in which we wish to predict the action $y_t$ taken by an agent, given its local FOV $X_t$. Note each example $(X_t, y_t)$ is assumed to be i.i.d. Although this assumption may be false, the success of [[1]](#references) suggests modelling of temporal dependencies is unneccessary to achieve high accuracy. 
+Borrowing from [[1]](#references), we cast the problem of mimicing CBS to a supervised learning task in which we wish to predict the action taken by an agent given its local FOV. Note each labelled example is assumed to be i.i.d. Although this assumption may be false, the success of [[1]](#references) suggests that modelling temporal dependencies is not required to achieve high accuracy. 
 
-Using this formulation, we compile a large dataset of CBS solutions [[5]](#references) and train several models to 
+Using this framework, we compile a large dataset containing CBS solutions to path planning problems on 20x20 maps [[5]](#references). Specifically, we train a three layer CNN, a logistic regression model and a naive bayes classifier (NBC).
 
 
+## Evaluation
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-We compile a large dataset of CBS solutions 
+Despite the simplicity of our models, they demonstrate an ability to accurately mimic the behaviour of CBS in unknown environments. Visualizations from our logistic regression model elucidate linear correlations between FOV features and an agent's action when controlled by CBS. 
 
 
 
