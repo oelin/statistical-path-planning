@@ -39,7 +39,34 @@ Using this framework, we compile a large dataset containing CBS solutions to pat
 
 ## Evaluation
 
-Despite the simplicity of our models, they demonstrate an ability to accurately mimic the behaviour of CBS in unknown environments. Visualizations from our logistic regression model elucidate linear correlations between FOV features and an agent's action when controlled by CBS. 
+Despite the simplicity of our models, they demonstrate an ability to accurately mimic the behaviour of CBS in unknown environments. 
+
+### Performance
+
+
+### Visualizations 
+
+Visualizations from our logistic regression model elucidate linear correlations between an agent's FOV, and actions it takes when controlled by CBS. For instance, the first image shows a strong positive correlation between the action `stay` and contexts where the agent's goal is in the center of its FOV. This makes intuitive sense as these are exactly the contexts in which the agent has *reached* its goal. 
+
+**FOV layer:** `goal position`  
+**Action:** `stay`
+
+![](https://github.com/oelin/generative-path-planning/blob/main/images/features0.png)
+
+**FOV layer:** `goal position`  
+**Action:** `up`
+
+![](https://github.com/oelin/generative-path-planning/blob/main/images/features1.png)
+
+**FOV layer:** `goal position`  
+**Action:** `right`
+
+![](https://github.com/oelin/generative-path-planning/blob/main/images/features2.png)
+
+**FOV layer:** `agent position`  
+**Action:** `right`
+
+![](https://github.com/oelin/generative-path-planning/blob/main/images/features3.png)
 
 
 
