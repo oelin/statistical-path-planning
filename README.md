@@ -2,7 +2,7 @@
 
 **[Introduction](#introduction) | [Method](#method) | [Evaluation](#evaluation) | [Conclusion](#conclusion)**
 
-We train a lightweight statistical model to solve path planning problems by mimicking the behaviour of conflict-based search (CBS) in dynamic environments. While [[Qingbiao et al., 2020]](#references) use graph neural networks (GNNs) for this task, we find that far simpler models perform competitively.
+We train a lightweight statistical model to solve path planning problems by mimicking the behaviour of conflict-based search (CBS) in dynamic environments. While [[Qingbiao et al., 2020]](#references) use graph neural networks (GNNs) for this task, we find that far simpler models are also effective.
 
 ![](https://github.com/oelin/statistical-path-planning/blob/main/images/uav.webp)
 
@@ -30,32 +30,32 @@ spp version 1.0.0
 
 ## Introduction
 
-Multi-agent path planning (MPP) is the task of finding efficient, collision-free paths for mutliple agents within a shared environment. It has numerous applications, from search and resue operations [[1]](#references) to game design [[2]](#references). Conflict-based search (CBS), propsed by [[Sharon et al., 2015]](#references), is an efficient, optimal MPP algorithm which employs a divide-and-conque strategy.
+Multi-agent path planning (MAPP) is the task of finding efficient, collision-free paths for mutliple agents within a shared environment. It has numerous applications, from search and resue operations [[2]](#references) to game design [[3]](#references). Conflict-based search (CBS) propsed by [[Sharon et al., 2015]](#references), is an optimal MAPP algorithm which uses a divide-and-conquer approach to achieve high efficiency. 
 
-While CBS is optimal, it requires *complete* knowledge of the envrionemnt prior to planning. This can be problematic in scenarios where the environment is dynamic or unpredictable. To address this limitation, [[Qingbao et al., 2020]](#references) propose a statistical approximation of CBS using graph neural networks (GNNs) and imitation learning. They train a GNN to mimic the behaviour of CBS by predicting the actions an agent will take given its local field of view (FOV).
+While CBS *is optimal*, it requires *complete* knowledge of the envrionemnt prior to planning. This can be problematic in scenarios where the environment is dynamic or unpredictable. To address this limitation, [[Qingbao et al., 2020]](#references) propose a statistical approximation of CBS using graph neural networks (GNNs) and imitation learning. They train a GNN to mimic the behaviour of CBS by predicting the actions agents will take given their local field of views (FOVs).
 
-We take a similar approach to [[Qingbao et al., 2020]](#references), however find that GNNs are *not required* to mimic CBS effectively. We train a lightweight, 735-parameter logistic regression model to perform the same task and find that it achieves over 95% accuracy. This result makes statistical path planning an attractive option for resource-constrained devices such as UAVs [[3]](#references).
+In this project we take a similar approach, however find that GNNs are *not required* to mimic CBS effectively. We train a lightweight, 735-parameter logistic regression model to perform the same task with over 95% accuracy. This makes statistical path planning an attractive option for resource-constrained devices such as UAVs [[4]](#references).
 
 
 ## Method
 
-We cast the problem of mimicking CBS to a supervised learning task where the goal is to predict an agent's action given its local FOV. 
+We reduce the problem of mimicking CBS to the supervised learning task of predicting an agent's action given its FOV. 
 
 
 ### Data Collection
 
-To create a supervised learning dataset, we randomly generate several thousand MPP problems and find optimal solutions using CBS [[5]](#references). We then extract individiual actions from each solution, amounting to over four million labelled examples [(1)](#footnotes). The large size of this dataset helps to mitigate overfitting during training.
+To create a supervised learning dataset, we randomly generate several thousand MAPP problems with corresponding solutions found by CBS [[5]](#references). We then extract individiual actions from each solution to produce over four million labelled examples [(1)](#footnotes). Our dataset's large size helps to mitigate the effects of overfitting during training.
 
 
 ### Feature Extraction 
 
-We represnt an agent's FOV using a 7x7 binary image containing three channels (735 features):
+We represnt an agent's FOV using a 7x7 binary image containing three channels (=735 features):
 
 - `State`: encodes the relative position of agents within the FOV.
 - `Goal`: encodes the relative position of an agent's goal within the FOV. Clipped to the FOV boundry when out of range.
 - `Map`: encodes the relative position of obstacles within the FOV.
 
-For instance, the following `State` channel shows three agents within the FOV. The current agent is always located in the centre.
+For instance, the following `State` channel shows three agents in different locations. Note that the *current* agent is always located in the centre.
 
 ```
 0 0 0 0 0 1 0
@@ -100,7 +100,7 @@ Compared to deep neural networks, linear models tend to be far more explainable.
 
 ![](https://github.com/oelin/generative-path-planning/blob/main/images/features3.png)
 
-In these visualizations, light pixels represent strong positive weights, whereas dark pixels represent strong negative weights. The first image shows a strong positive correlation between an agent's decision to `Stay` and the presence of a goal within the center of their FOV. This makes intuitive sense as agents should never move after reaching their goal. Similarly, the second image shows a strong correlation between an agent's decision to move `North` and the presence of a goal above them. These visualizations help us understand *why* the model makes certain decisions. 
+In these visualizations, light pixels represent strong positive weights, whereas dark pixels represent strong negative weights. The first image shows a strong positive correlation between an agent's decision to `Stay` and the presence of a goal within the center of their FOV. This makes intuitive sense as agents should never move after reaching their goal. Similarly, the second image shows a strong correlation between an agent's decision to move `North` and the presence of a goal above them. These visualizations can be created for any channel-action pair to understand *why* the models makes certain decisions.
 
 
 ## Footnotes
