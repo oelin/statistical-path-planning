@@ -78,7 +78,7 @@ Despite the simplicity of our models, they demonstrate an ability to accurately 
 
 ### Explainability
 
-As our model is linear it doesn't suffer from many of the explainability issues found in deep neural networks. We visualize some of the 735-parameter model weights below.
+Compared to deep neural networks, linear models tend to be far more explainable. We demonstrate this by visualizing some weights from our 735-parameter model.
 
 **FOV channel:** `Goal`  
 **Action:** `Stay`
@@ -100,7 +100,7 @@ As our model is linear it doesn't suffer from many of the explainability issues 
 
 ![](https://github.com/oelin/generative-path-planning/blob/main/images/features3.png)
 
-In these visualizations, light pixels represent strong positive weights, whereas dark pixels represent strong negative weights. The first image shows a strong positive correlation between an agent's decision to `Stay` and the presence of a goal within the center of their FOV. This makes intuitive sense as agents should not move after reaching their goal.
+In these visualizations, light pixels represent strong positive weights, whereas dark pixels represent strong negative weights. The first image shows a strong positive correlation between an agent's decision to `Stay` and the presence of a goal within the center of their FOV. This makes intuitive sense as agents should never move after reaching their goal. Similarly, the second image shows a strong correlation between an agent's decision to move `North` and the presence of a goal above them. These visualizations help us understand *why* the model makes certain decisions. 
 
 
 ## Footnotes
