@@ -39,12 +39,7 @@ In this project we take a similar approach, however find that GNNs are *not requ
 
 ## Dataset
 
-We reduce the problem of mimicking CBS to the supervised learning task of predicting an agent's action given its FOV. 
-
-
-### Creation
-
-To create a supervised learning dataset, we randomly generate several thousand MAPP problems with corresponding solutions found by CBS [[5]](#references). We then extract individiual actions from each solution to produce over four million labelled examples [(1)](#footnotes). Our dataset's large size helps to mitigate the effects of overfitting during training.
+We reduce the problem of mimicking CBS to the supervised learning task of predicting an agent's action given its FOV. To create a supervised learning dataset, we randomly generate several thousand MAPP problems with corresponding solutions found by CBS [[5]](#references). We then extract individiual actions from each solution to produce over four million labelled examples [(1)](#footnotes). Our dataset's large size helps to mitigate the effects of overfitting during training.
 
 
 ### Features 
