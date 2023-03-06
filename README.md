@@ -6,11 +6,11 @@ We train a lightweight statistical model to solve path planning problems by mimi
 
 ![](https://github.com/oelin/statistical-path-planning/blob/main/images/uav.webp)
 
->  Our 735-parameter logistic regression model correctly predicts over 95% of CBS actions despite only requring partial knowledge of the environment. This makes it a viable option for resource-constrained devices such as UAVs [[1]](#references).
+>  Our 735-parameter logistic regression model correctly predicts over 95% of CBS actions using only *partial* knowledge of the environment. This makes it an attractive option for resource-constrained devices such as UAVs [[1]](#references).
 
 ![](https://github.com/oelin/statistical-path-planning/blob/main/images/example.gif)
 
-> An example of statistical path planning using logistic regression. Five agents navigate towards five targets (shown in white), while avoiding obstacles and each other. Agents act independently, however their collective behaviour closely resembles CBS.
+> An example of statistical path planning using logistic regression. Five agents navigate towards five targets (shown in white), while avoiding obstacles and each other. Agents act independently however collectively approximate CBS.
 
 
 ## Installation
@@ -30,11 +30,11 @@ spp version 1.0.0
 
 ## Introduction
 
-Multi-agent path planning (MPP) is the task of finding efficient, collision-free paths for mutliple agents within a shared environment. It has numerous applications in fields such as search and resue [[2]](#references), UAV navigation [[3]](#references), and game design [[4]](#references). Conflict-based search (CBS), propsed by [[Sharon et al., 2015]](#references), is an efficient, optimal MPP algorithm which divides the problem into two levels of abstraction.
+Multi-agent path planning (MPP) is the task of finding efficient, collision-free paths for mutliple agents within a shared environment. It has numerous applications, from search and resue operations [[2]](#references) to game design [[3]](#references). Conflict-based search (CBS), propsed by [[Sharon et al., 2015]](#references), is an efficient, optimal MPP algorithm which employs a divide-and-conque strategy.
 
-While CBS is optimal, it requires a complete map of the target area in order to form plans. This can be problematic in scenarios where the environment is unknown or constantly changing. To address this limitation, [[Qingbao et al., 2020]](#references) propose a statistical approximation of CBS using graph neural networks (GNNs) and imitation learning. They train a GNN to mimic the behaviour of CBS by predicting the actions an agent will take given its local field of view (FOV).
+While CBS is optimal, it requires *complete* knowledge of the envrionemnt prior to planning. This can be problematic in scenarios where the environment is dynamic or unpredictable. To address this limitation, [[Qingbao et al., 2020]](#references) propose a statistical approximation of CBS using graph neural networks (GNNs) and imitation learning. They train a GNN to mimic the behaviour of CBS by predicting the actions an agent will take given its local field of view (FOV).
 
-We take a similar approach to [[Qingbao et al., 2020]](#references), however find that GNNs are *not required* to mimic CBS effectively. For instance, we train a 735-parameter logistic regression model to correctly predict over 95% of all agent actions. The ability to use such lightweight models makes statistical path planning a viable solution for resource-constrained devices such as UAVs [[5]](#references).
+We take a similar approach to [[Qingbao et al., 2020]](#references), however find that GNNs are *not required* to mimic CBS effectively. We train a lightweight, 735-parameter logistic regression model to perform the same task and find that it achieves over 95% accuracy. This result makes statistical path planning an attractive option for resource-constrained devices such as UAVs.
 
 
 ## Method
