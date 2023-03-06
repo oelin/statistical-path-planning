@@ -57,6 +57,7 @@ We represnt an agent's FOV using a 7x7 binary image containing three channels (=
 
 For instance, the following `State` channel shows three agents in different locations. Note that the *current* agent is always located in the centre.
 
+
 ```
 0 0 0 0 0 1 0
 0 0 0 0 0 0 0
@@ -66,6 +67,11 @@ For instance, the following `State` channel shows three agents in different loca
 0 0 0 1 0 0 0
 0 0 0 0 0 0 0
 ```
+
+
+### Storage
+
+Due to the large size of our dataset, we store each example using in compressed form and use chunking to support procedural download. The complete dataset is hosted on GitHub at [https://github.com/oelin/cbs-5](https://github.com/oelin/cbs-5).
 
 
 ## Training
