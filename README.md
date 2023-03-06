@@ -70,7 +70,7 @@ For instance, the following `State` channel shows three agents in different loca
 
 ## Evaluation
 
-Despite the simplicity of our models, they demonstrate an ability to accurately mimic the behaviour of CBS in unknown environments. 
+Despite the simplicity of our model it performs competatively with more complex alternatives. Given the size of our dataset, this suggests the underlying task of predicting CBS actions is not particularly difficult.
 
 
 ### Performance
