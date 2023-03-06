@@ -44,7 +44,7 @@ We reduce the problem of mimicking CBS to the supervised learning task of predic
 
 ### Features 
 
-We represnt an agent's FOV using a 7x7 binary image containing three channels (=735 features):
+We represnt an agent's FOV using a 7x7 binary image containing three channels (147 features):
 
 - `State`: encodes the relative position of agents within the FOV.
 - `Goal`: encodes the relative position of an agent's goal within the FOV. Clipped to the FOV boundry when out of range.
