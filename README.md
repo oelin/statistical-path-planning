@@ -2,7 +2,7 @@
 
 **[Introduction](#introduction) | [Method](#method) | [Evaluation](#evaluation) | [Conclusion](#conclusion)**
 
-We train a statistical model to solve path planning problems by mimicing the behaviour of conflict-based search (CBS) in unknown environments. While [[Qingbiao et al., 2020]](#references) use graph neural networks (GNNs) for this task, we find that far simpler models such as logistic regression also perform competitively.  
+We train a statistical model to solve path planning problems by mimicking the behaviour of conflict-based search (CBS) in unknown environments. While [[Qingbiao et al., 2020]](#references) use graph neural networks (GNNs) for this task, we find that far simpler models such as logistic regression also perform competitively.  
 
 ![](https://github.com/oelin/generative-path-planning/blob/main/images/example.gif)
 
