@@ -6,7 +6,7 @@ We train a lightweight statistical model to solve path planning problems by mimi
 
 ![](https://github.com/oelin/statistical-path-planning/blob/main/images/uav.webp)
 
->  Our 735-parameter logistic regression model correctly predicts over 95% of CBS actions using only *partial* knowledge of the environment. This makes it an attractive option for resource-constrained devices such as UAVs [[1]](#references).
+>  Our 735-parameter logistic regression model correctly predicts over 95% of CBS actions using only *partial* knowledge of the environment. This makes it an attractive option for resource-constrained devices such as UAVs.
 
 ![](https://github.com/oelin/statistical-path-planning/blob/main/images/example.gif)
 
@@ -30,11 +30,11 @@ spp version 1.0.0
 
 ## Introduction
 
-Multi-agent path planning (MPP) is the task of finding efficient, collision-free paths for mutliple agents within a shared environment. It has numerous applications, from search and resue operations [[2]](#references) to game design [[3]](#references). Conflict-based search (CBS), propsed by [[Sharon et al., 2015]](#references), is an efficient, optimal MPP algorithm which employs a divide-and-conque strategy.
+Multi-agent path planning (MPP) is the task of finding efficient, collision-free paths for mutliple agents within a shared environment. It has numerous applications, from search and resue operations [[1]](#references) to game design [[2]](#references). Conflict-based search (CBS), propsed by [[Sharon et al., 2015]](#references), is an efficient, optimal MPP algorithm which employs a divide-and-conque strategy.
 
 While CBS is optimal, it requires *complete* knowledge of the envrionemnt prior to planning. This can be problematic in scenarios where the environment is dynamic or unpredictable. To address this limitation, [[Qingbao et al., 2020]](#references) propose a statistical approximation of CBS using graph neural networks (GNNs) and imitation learning. They train a GNN to mimic the behaviour of CBS by predicting the actions an agent will take given its local field of view (FOV).
 
-We take a similar approach to [[Qingbao et al., 2020]](#references), however find that GNNs are *not required* to mimic CBS effectively. We train a lightweight, 735-parameter logistic regression model to perform the same task and find that it achieves over 95% accuracy. This result makes statistical path planning an attractive option for resource-constrained devices such as UAVs.
+We take a similar approach to [[Qingbao et al., 2020]](#references), however find that GNNs are *not required* to mimic CBS effectively. We train a lightweight, 735-parameter logistic regression model to perform the same task and find that it achieves over 95% accuracy. This result makes statistical path planning an attractive option for resource-constrained devices such as UAVs [[3]](#references).
 
 
 ## Method
@@ -44,7 +44,7 @@ We cast the problem of mimicking CBS to a supervised learning task where the goa
 
 ### Data Collection
 
-To create a supervised learning dataset, we randomly generate several thousand MPP problems and find optimal solutions using CBS [[6]](#references). We then extract individiual actions from each solution, amounting to over four million labelled examples [(1)](#footnotes). The large size of this dataset helps to mitigate overfitting during training.
+To create a supervised learning dataset, we randomly generate several thousand MPP problems and find optimal solutions using CBS [[5]](#references). We then extract individiual actions from each solution, amounting to over four million labelled examples [(1)](#footnotes). The large size of this dataset helps to mitigate overfitting during training.
 
 
 ### Feature Extraction 
@@ -76,9 +76,9 @@ Despite the simplicity of our models, they demonstrate an ability to accurately 
 ### Performance
 
 
-### Visualizations 
+### Explainability
 
-Visualizations from our logistic regression model elucidate linear correlations between an agent's FOV, and actions it takes when controlled by CBS. For instance, the first image shows a strong positive correlation between the action `stay` and contexts where the agent's goal is in the center of its FOV. This makes intuitive sense as these are exactly the contexts in which the agent has *reached* its goal. 
+As our model is linear it doesn't suffer from many of the explainability issues found in deep neural networks. We visualize some of the 735-parameter model weights below.
 
 **FOV channel:** `Goal`  
 **Action:** `Stay`
@@ -99,6 +99,8 @@ Visualizations from our logistic regression model elucidate linear correlations 
 **Action:** `East`
 
 ![](https://github.com/oelin/generative-path-planning/blob/main/images/features3.png)
+
+In these visualizations, light pixels represent strong positive weights, whereas dark pixels represent strong negative weights. The first image shows a strong positive correlation between an agent's decision to `Stay` and the presence of a goal within the center of their FOV. This makes intuitive sense as agents should not move after reaching their goal.
 
 
 ## Footnotes
