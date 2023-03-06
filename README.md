@@ -2,11 +2,15 @@
 
 **[Introduction](#introduction) | [Method](#method) | [Evaluation](#evaluation) | [Conclusion](#conclusion)**
 
-We train a statistical model to solve path planning problems by mimicking the behaviour of conflict-based search (CBS) in unknown environments. While [[Qingbiao et al., 2020]](#references) use graph neural networks (GNNs) for this task, we find that far simpler models such as logistic regression also perform competitively.  
+We train a lightweight statistical model to solve path planning problems by mimicking the behaviour of conflict-based search (CBS) in dynamic environments. While [[Qingbiao et al., 2020]](#references) use graph neural networks (GNNs) for this task, we find that far simpler models perform competitively.
 
-![](https://github.com/oelin/generative-path-planning/blob/main/images/example.gif)
+![](https://github.com/oelin/statistical-path-planning/blob/main/images/uav.webp)
 
-> An example of statistical path planning using logistic regression. Five agents navigate towards five targets (shown in white), while avoiding obstacles and each other. Agents act independently, however their collective behaviour closely resembles CBS.
+> Our 735-parameter logistic regression model to correctly predict over 95% of all agent actions. The ability to use such lightweight models makes statistical path planning a viable solution for resource-constrained devices such as UAVs [[5]](#references).
+
+![](https://github.com/oelin/statistical-path-planning/blob/main/images/example.gif)
+
+> OuAn example of statistical path planning using logistic regression. Five agents navigate towards five targets (shown in white), while avoiding obstacles and each other. Agents act independently, however their collective behaviour closely resembles CBS.
 
 
 ## Installation
