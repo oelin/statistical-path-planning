@@ -15,11 +15,11 @@ We train a lightweight statistical model to solve path planning problems by mimi
 
 ## Introduction
 
-Multi-agent path planning (MAPP) is the task of finding efficient, collision-free paths for mutliple agents within a shared environment. It has numerous applications, from search and resue operations [[2]](#references) to game design [[3]](#references). Conflict-based search (CBS) propsed by [[Sharon et al., 2015]](#references), is an optimal MAPP algorithm which uses a divide-and-conquer approach to achieve high efficiency. 
+Multi-agent path planning (MAPP) is the task of finding efficient, collision-free paths for mutliple agents within a shared environment. It has numerous applications, from search and resue operations [[2]](#references) to game design. Conflict-based search (CBS) propsed by [[Sharon et al., 2015]](#references), is an optimal MAPP algorithm which uses a divide-and-conquer approach to achieve high efficiency. 
 
 While CBS *is optimal*, it requires *complete* knowledge of the envrionemnt prior to planning. This can be problematic in scenarios where the environment is dynamic or unpredictable. To address this limitation, [[Qingbao et al., 2020]](#references) propose a statistical approximation of CBS using graph neural networks (GNNs) and imitation learning. They train a GNN to mimic the behaviour of CBS by predicting the actions agents will take given their local field of views (FOVs).
 
-In this project we take a similar approach, however find that GNNs are *not required* to mimic CBS effectively. We train a lightweight, 740-parameter logistic regression model to perform the same task with over 95% accuracy. This makes statistical path planning an attractive option for resource-constrained devices such as UAVs [[4]](#references).
+In this project we take a similar approach, however find that GNNs are *not required* to mimic CBS effectively. We train a lightweight, 740-parameter logistic regression model to perform the same task with over 95% accuracy. This makes statistical path planning an attractive option for resource-constrained devices such as UAVs.
 
 
 ## Dataset
@@ -100,12 +100,22 @@ Compared to deep neural networks, linear models tend to be far more explainable.
 In these visualizations, light pixels represent strong positive weights, whereas dark pixels represent strong negative weights. The first image shows a strong positive correlation between an agent's decision to `Stay` and the presence of a goal within the center of their FOV. This makes intuitive sense as agents should never move after reaching their goal. Similarly, the second image shows a strong correlation between an agent's decision to move `North` and the presence of a goal above them. These visualizations can be created for any channel-action pair to understand *why* the models makes certain decisions.
 
 
+## Conclusion
+
+In this project we demonstrate the capability of simple machine learning models to approximate optimal path planning algorithms through imitation learning. In comparison to traditional conflict-based search (CBS), our approach allows agents to operate in a decentralized manner which only requires partial knowledge of the environment. The marginal improvements made by increasing model complexity suggest the relationship between an agent's FOV and the action they take isn't very complex. To improve predictive accuracy further, additonal factors could be taken into account such as inter-agent communication. 
+
+
 ## Footnotes
 
 1. We make the conventional assumption that each labelled example is i.i.d. While this assumption may be false, the success of [[1]](#reference) suggests temporal dependencies do not play a significant role in determining agent actions.
 
 
 ## References
-1. qingbao paper
-2. http://cs229.stanford.edu/proj2017/final-reports/5241779.pdf
-3. https://www.sciencedirect.com/science/article/abs/pii/S0305054814001749
+
+1. Li, Qingbiao. "Graph Neural Networks for Decentralized Multi-Robot Path Planning." ArXiv.org, 14 July 2020, https://arxiv.org/abs/1912.06095. 
+
+2. Berger, Jean, et al. “An Innovative Multi-Agent Search-and-Rescue Path Planning Approach.” ScienceDirect, Pergamon, 23 June 2014, https://www.sciencedirect.com/science/article/abs/pii/S0305054814001749. 
+
+3. Sharon, Guni. Conflict-Based Search for Optimal Multi-Agent Pathfinding. https://www.researchgate.net/publication/278400742_Conflict-based_search_for_optimal_multi-agent_pathfinding. 
+
+4. Champagnie, Kale. “Oelin/CBS-5: A Large Dataset Containing Optimal Actions Taken by Conflict-Based Search (CBS) with Five Agents on Random 20x20 Maps.” GitHub, https://github.com/oelin/cbs-5. 
