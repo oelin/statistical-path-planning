@@ -6,11 +6,11 @@ We train a lightweight statistical model to solve path planning problems by mimi
 
 ![](https://github.com/oelin/statistical-path-planning/blob/main/images/uav.webp)
 
-> Our 735-parameter logistic regression model to correctly predict over 95% of all agent actions. The ability to use such lightweight models makes statistical path planning a viable solution for resource-constrained devices such as UAVs [[5]](#references).
+>  Our 735-parameter logistic regression model correctly predicts over 95% of all actions taken by CBS, using only partial knowledge of the environment. This makes it a viable option resource-constrained devices such as UAVs [[1]](#references).
 
 ![](https://github.com/oelin/statistical-path-planning/blob/main/images/example.gif)
 
-> OuAn example of statistical path planning using logistic regression. Five agents navigate towards five targets (shown in white), while avoiding obstacles and each other. Agents act independently, however their collective behaviour closely resembles CBS.
+> An example of statistical path planning using logistic regression. Five agents navigate towards five targets (shown in white), while avoiding obstacles and each other. Agents act independently, however their collective behaviour closely resembles CBS.
 
 
 ## Installation
