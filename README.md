@@ -47,7 +47,7 @@ We reduce the problem of mimicking CBS to the supervised learning task of predic
 To create a supervised learning dataset, we randomly generate several thousand MAPP problems with corresponding solutions found by CBS [[5]](#references). We then extract individiual actions from each solution to produce over four million labelled examples [(1)](#footnotes). Our dataset's large size helps to mitigate the effects of overfitting during training.
 
 
-### Feature Extraction 
+### Features 
 
 We represnt an agent's FOV using a 7x7 binary image containing three channels (=735 features):
 
