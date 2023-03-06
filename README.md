@@ -6,7 +6,7 @@ We train a lightweight statistical model to solve path planning problems by mimi
 
 ![](https://github.com/oelin/statistical-path-planning/blob/main/images/uav.webp)
 
->  Our 735-parameter logistic regression model correctly predicts over 95% of CBS actions using only *partial* knowledge of the environment. This makes it an attractive option for resource-constrained devices such as UAVs.
+>  Our 740-parameter logistic regression model correctly predicts over 95% of CBS actions using only *partial* knowledge of the environment. This makes it an attractive option for resource-constrained devices such as UAVs.
 
 ![](https://github.com/oelin/statistical-path-planning/blob/main/images/example.gif)
 
@@ -19,7 +19,7 @@ Multi-agent path planning (MAPP) is the task of finding efficient, collision-fre
 
 While CBS *is optimal*, it requires *complete* knowledge of the envrionemnt prior to planning. This can be problematic in scenarios where the environment is dynamic or unpredictable. To address this limitation, [[Qingbao et al., 2020]](#references) propose a statistical approximation of CBS using graph neural networks (GNNs) and imitation learning. They train a GNN to mimic the behaviour of CBS by predicting the actions agents will take given their local field of views (FOVs).
 
-In this project we take a similar approach, however find that GNNs are *not required* to mimic CBS effectively. We train a lightweight, 735-parameter logistic regression model to perform the same task with over 95% accuracy. This makes statistical path planning an attractive option for resource-constrained devices such as UAVs [[4]](#references).
+In this project we take a similar approach, however find that GNNs are *not required* to mimic CBS effectively. We train a lightweight, 740-parameter logistic regression model to perform the same task with over 95% accuracy. This makes statistical path planning an attractive option for resource-constrained devices such as UAVs [[4]](#references).
 
 
 ## Dataset
@@ -64,7 +64,7 @@ We train three models on our dataset; a lightweight logistic regression model, a
 
 ### Performance
 
-Accuracy results for three models trained on chunk 0 of CBS-5 v0 for two epochs, and tested on chunk 0 of CBS-5 v1.
+Comparison of three models trained on CBS-5 **v0** for two epochs, and tested on CBS-5 **v1**.
 
 | Model                 | # Parameters | Accuracy (Train) | Accuracy (Test) |
 |-----------------------|--------------|------------------|-----------------|
@@ -75,7 +75,7 @@ Accuracy results for three models trained on chunk 0 of CBS-5 v0 for two epochs,
 
 ### Explainability
 
-Compared to deep neural networks, linear models tend to be far more explainable. We demonstrate this by visualizing some weights from our 735-parameter model.
+Compared to deep neural networks, linear models tend to be far more explainable. We demonstrate this by visualizing some weights from our 740-parameter model.
 
 **FOV channel:** `Goal`  
 **Action:** `Stay`
