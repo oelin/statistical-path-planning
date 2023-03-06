@@ -6,7 +6,7 @@ We train a lightweight statistical model to solve path planning problems by mimi
 
 ![](https://github.com/oelin/statistical-path-planning/blob/main/images/uav.webp)
 
->  Our 740-parameter logistic regression model correctly predicts over 95% of CBS actions using only *partial* knowledge of the environment. This makes it an attractive option for resource-constrained devices such as UAVs.
+>  Our 740-parameter logistic regression model achieves over 95% accuracy in predicting CBS actions using *partial* knowledge of the environment. It's small size comes in handy for resource-constrained devices such as UAVs. 
 
 ![](https://github.com/oelin/statistical-path-planning/blob/main/images/example.gif)
 
@@ -17,14 +17,14 @@ We train a lightweight statistical model to solve path planning problems by mimi
 
 Multi-agent path planning (MAPP) is the task of finding efficient, collision-free paths for mutliple agents within a shared environment. It has numerous applications, from search and resue operations [[2]](#references) to game design. Conflict-based search (CBS) propsed by [[Sharon et al., 2015]](#references), is an optimal MAPP algorithm which uses a divide-and-conquer approach to achieve high efficiency. 
 
-While CBS *is optimal*, it requires *complete* knowledge of the envrionemnt prior to planning. This can be problematic in scenarios where the environment is dynamic or unpredictable. To address this limitation, [[Qingbao et al., 2020]](#references) propose a statistical approximation of CBS using graph neural networks (GNNs) and imitation learning. They train a GNN to mimic the behaviour of CBS by predicting the actions agents will take given their local field of views (FOVs).
+While CBS *is optimal*, it requires *complete* knowledge of the envrionemnt prior to planning. This can be problematic in scenarios where the environment is dynamic or unpredictable. To address this limitation, [[Qingbao et al., 2020]](#references) propose a statistical approximation of CBS using graph neural networks (GNNs) and imitation learning. They train a GNN to mimic the behaviour of CBS by predicting the actions agents will take, given their local field of views (FOVs).
 
-In this project we take a similar approach, however find that GNNs are *not required* to mimic CBS effectively. We train a lightweight, 740-parameter logistic regression model to perform the same task with over 95% accuracy. This makes statistical path planning an attractive option for resource-constrained devices such as UAVs.
+In this project we use a similar approach, however find that GNNs are *not required* to mimic CBS effectively. We train a lightweight, 740-parameter logistic regression model to perform the same task and find that it achieves over 95% accuracy. We also train a multi-layer perceptron (MLP) and small convolutional neural network (CNN), which achieve over 96% accuracy. 
 
 
 ## Dataset
 
-We reduce the problem of mimicking CBS to the supervised learning task of predicting an agent's action given its FOV. To create a supervised learning dataset, we randomly generate several thousand MAPP problems with corresponding solutions found by CBS [[5]](#references). We then extract individiual actions from each solution to produce over four million labelled examples [(1)](#footnotes). Our dataset's large size helps to mitigate the effects of overfitting during training.
+We cast the problem of mimicking CBS to a supervised learning task where the goal is to predict an agent's action given its local field of view (FOV). To create a supervised learning dataset, we randomly generate several thousand MAPP problems with optimal solutions found using CBS [[4]](#references). We then extract individiual actions from each solution, resulting in approximately five million labelled examples [(1)](#footnotes). Our dataset's large size helps to mitigate the effects of overfitting during training.
 
 
 ### Features 
@@ -72,6 +72,8 @@ Comparison of three models trained on CBS-5 **v0** for two epochs, and tested on
 | `mlp`                 | 79,365       | 96.86%           | 96.83%          |
 | `cnn`                 | 21,701       | 96.90%           | 96.90%          |
 
+Overall, `cnn` achieves highest train and test accuracy, however not *sigificantly* higher than `logistic_regression`. Given that `logistic_regression` is almost 30 times smaller, the additional parameters offer relatively little benifit. 
+
 
 ### Explainability
 
@@ -102,7 +104,7 @@ In these visualizations, light pixels represent strong positive weights, whereas
 
 ## Conclusion
 
-In this project we demonstrate the capability of simple machine learning models to approximate optimal path planning algorithms through imitation learning. In comparison to traditional conflict-based search (CBS), our approach allows agents to operate in a decentralized manner which only requires partial knowledge of the environment. The marginal improvements made by increasing model complexity suggest the relationship between an agent's FOV and the action they take isn't very complex. To improve predictive accuracy further, additonal factors could be taken into account such as inter-agent communication. 
+In this project we demonstrate the capability of simple machine learning models to approximate optimal path planning algorithms through imitation learning. In comparison to traditional conflict-based search (CBS), our approach allows agents to operate in a decentralized manner which only requires partial knowledge of the environment. The marginal improvements made by increasing model complexity suggest the relationship between an agent's FOV and the action they take is reasonably simple. To improve predictive accuracy further, additonal factors could be taken into account such as inter-agent communication. 
 
 
 ## Footnotes
