@@ -6,7 +6,7 @@ We train a lightweight statistical model to solve path planning problems by mimi
 
 ![](https://github.com/oelin/statistical-path-planning/blob/main/images/uav.webp)
 
->  Our 735-parameter logistic regression model correctly predicts over 95% of all actions taken by CBS, using only partial knowledge of the environment. This makes it a viable option resource-constrained devices such as UAVs [[1]](#references).
+>  Our 735-parameter logistic regression model correctly predicts over 95% of CBS actions despite only requring partial knowledge of the environment. This makes it a viable option for resource-constrained devices such as UAVs [[1]](#references).
 
 ![](https://github.com/oelin/statistical-path-planning/blob/main/images/example.gif)
 
