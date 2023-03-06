@@ -1,6 +1,6 @@
 # Statistical Path Planning
 
-**[Introduction](#introduction) | [Data](#data) | [Training](#training) | [Evaluation](#evaluation) | [Conclusion](#conclusion)**
+**[Introduction](#introduction) | [Dataset](#dataset) | [Training](#training) | [Evaluation](#evaluation) | [Conclusion](#conclusion)**
 
 We train a lightweight statistical model to solve path planning problems by mimicking the behaviour of conflict-based search (CBS) in dynamic environments. While [[Qingbiao et al., 2020]](#references) use graph neural networks (GNNs) for this task, we find that far simpler models are also effective.
 
@@ -37,12 +37,12 @@ While CBS *is optimal*, it requires *complete* knowledge of the envrionemnt prio
 In this project we take a similar approach, however find that GNNs are *not required* to mimic CBS effectively. We train a lightweight, 735-parameter logistic regression model to perform the same task with over 95% accuracy. This makes statistical path planning an attractive option for resource-constrained devices such as UAVs [[4]](#references).
 
 
-## Data
+## Dataset
 
 We reduce the problem of mimicking CBS to the supervised learning task of predicting an agent's action given its FOV. 
 
 
-### Data Collection
+### Creation
 
 To create a supervised learning dataset, we randomly generate several thousand MAPP problems with corresponding solutions found by CBS [[5]](#references). We then extract individiual actions from each solution to produce over four million labelled examples [(1)](#footnotes). Our dataset's large size helps to mitigate the effects of overfitting during training.
 
