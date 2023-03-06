@@ -30,7 +30,7 @@ Multi-agent path planning (MPP) is the task of finding efficient, collision-free
 
 While CBS is optimal, it requires a complete map of the target area in order to form plans. This can be problematic in scenarios where the environment is unknown or constantly changing. To address this limitation, [[Qingbao et al., 2020]](#references) propose a statistical approximation of CBS using graph neural networks (GNNs) and imitation learning. They train a GNN to mimic the behaviour of CBS by predicting the actions an agent will take given its local field of view (FOV).
 
-We take a similar approach to [[Qingbao et al., 2020]](#references), however find that GNNs are *not required* to mimic CBS effectively. For instance, we train a 735-parameter logistic regression model to correctly predict over 95% of all agent actions. The ability to use such lightweight models makes statistical path planning a viable option viable option for resource-constrained devices such as low-end UAVs [[5]](#references).
+We take a similar approach to [[Qingbao et al., 2020]](#references), however find that GNNs are *not required* to mimic CBS effectively. For instance, we train a 735-parameter logistic regression model to correctly predict over 95% of all agent actions. The ability to use such lightweight models makes statistical path planning a viable solution for resource-constrained devices such as UAVs [[5]](#references).
 
 
 ## Method
