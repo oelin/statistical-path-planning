@@ -56,15 +56,21 @@ Due to the large size of our dataset, we store each example using in compressed 
 
 ## Training
 
-We train three models on our dataset; a lightweight logistic regression model, a multi-layer perceptron, and a small convolutional neural network (CNN). All three models are trained using stochastic gradient descent with PyTorch's `Adam` optimizer.
+We train three models on our dataset; a lightweight logistic regression model, a multi-layer perceptron, and a small convolutional neural network (CNN). All three models are trained using minibatch gradient descent with the Adam optimizer. We find that all three models perform comparably. 
 
 
 ## Evaluation
 
-Despite the simplicity of our model it performs competatively with more complex alternatives. Given the size of our dataset, this suggests the underlying task of predicting CBS actions is not particularly difficult.
-
 
 ### Performance
+
+Accuracy results for three models trained on chunk 0 of CBS-5 v0 for two epochs, and tested on chunk 0 of CBS-5 v1.
+
+| Model                 | # Parameters | Accuracy (Train) | Accuracy (Test) |
+|-----------------------|--------------|------------------|-----------------|
+| `logistic_regression` | 740          | 95.80%           | 95.78%          |
+| `mlp`                 | 79,365       | 96.86%           | 96.83%          |
+| `cnn`                 | 21,701       | 96.39%           | 96.84%          |
 
 
 ### Explainability
