@@ -13,21 +13,6 @@ We train a lightweight statistical model to solve path planning problems by mimi
 > An example of statistical path planning using logistic regression. Five agents navigate towards five targets (shown in white), while avoiding obstacles and each other. Agents act independently however collectively approximate CBS.
 
 
-## Installation
-
-This project is packaged using [Poetry](https://python-poetry.org/) and can be installed with `pip`.
-
-```sh
-pip install git+https://github.com/oelin/statistical-path-planning
-```
-
-To verify your installation, try running `spp version`. You should see something like this:
-
-```sh
-spp version 1.0.0
-```
-
-
 ## Introduction
 
 Multi-agent path planning (MAPP) is the task of finding efficient, collision-free paths for mutliple agents within a shared environment. It has numerous applications, from search and resue operations [[2]](#references) to game design [[3]](#references). Conflict-based search (CBS) propsed by [[Sharon et al., 2015]](#references), is an optimal MAPP algorithm which uses a divide-and-conquer approach to achieve high efficiency. 
