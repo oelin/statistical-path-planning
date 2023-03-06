@@ -1,6 +1,6 @@
 # Statistical Path Planning
 
-**[Introduction](#introduction) | [Method](#method) | [Evaluation](#evaluation) | [Conclusion](#conclusion)**
+**[Introduction](#introduction) | [Data](#data) | [Training](#training) | [Evaluation](#evaluation) | [Conclusion](#conclusion)**
 
 We train a lightweight statistical model to solve path planning problems by mimicking the behaviour of conflict-based search (CBS) in dynamic environments. While [[Qingbiao et al., 2020]](#references) use graph neural networks (GNNs) for this task, we find that far simpler models are also effective.
 
@@ -37,7 +37,7 @@ While CBS *is optimal*, it requires *complete* knowledge of the envrionemnt prio
 In this project we take a similar approach, however find that GNNs are *not required* to mimic CBS effectively. We train a lightweight, 735-parameter logistic regression model to perform the same task with over 95% accuracy. This makes statistical path planning an attractive option for resource-constrained devices such as UAVs [[4]](#references).
 
 
-## Method
+## Data
 
 We reduce the problem of mimicking CBS to the supervised learning task of predicting an agent's action given its FOV. 
 
@@ -68,9 +68,9 @@ For instance, the following `State` channel shows three agents in different loca
 ```
 
 
-## Models
+## Training
 
-We train three models on our dataset; a lightweight logistic regression model, a multi-layer perceptron, and a small convolutional neural network (CNN).
+We train three models on our dataset; a lightweight logistic regression model, a multi-layer perceptron, and a small convolutional neural network (CNN). All three models are trained using stochastic gradient descent with PyTorch's `Adam` optimizer.
 
 
 ## Evaluation
