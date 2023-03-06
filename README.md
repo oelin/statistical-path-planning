@@ -68,6 +68,11 @@ For instance, the following `State` channel shows three agents in different loca
 ```
 
 
+## Models
+
+We train three models on our dataset; a lightweight logistic regression model, a multi-layer perceptron, and a small convolutional neural network (CNN).
+
+
 ## Evaluation
 
 Despite the simplicity of our model it performs competatively with more complex alternatives. Given the size of our dataset, this suggests the underlying task of predicting CBS actions is not particularly difficult.
