@@ -70,7 +70,7 @@ Comparison of three models trained on CBS-5 **v0** for two epochs, and tested on
 |-----------------------|--------------|------------------|-----------------|
 | `logistic_regression` | 740          | 95.80%           | 95.78%          |
 | `mlp`                 | 79,365       | 96.86%           | 96.83%          |
-| `cnn`                 | 21,701       | 96.39%           | 96.84%          |
+| `cnn`                 | 21,701       | 96.90%           | 96.90%          |
 
 
 ### Explainability
