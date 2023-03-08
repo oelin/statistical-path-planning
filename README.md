@@ -72,7 +72,7 @@ Comparison of three models trained on CBS-5 **v0** for two epochs, and tested on
 | `mlp`                 | 79,365       | 96.86%           | 96.83%          |
 | `cnn`                 | 21,701       | 96.90%           | 96.90%          |
 
-Overall, `cnn` achieves highest train and test accuracy, however not *sigificantly* higher than `logistic_regression`. Given that `logistic_regression` is almost 30 times smaller, the additional parameters offer relatively little benifit. 
+Overall, `cnn` achieves highest train and test accuracy, however not *sigificantly* higher than `logistic_regression`. Given that `logistic_regression` is almost 30 times smaller, the additional parameters offer relatively little benefit. 
 
 
 ### Explainability
