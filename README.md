@@ -51,7 +51,7 @@ For instance, the following `State` channel shows three agents in different loca
 
 ### Storage
 
-Due to the large size of our dataset, we store each example using in compressed form and use chunking to support procedural download. The complete dataset is hosted on GitHub at [https://github.com/oelin/cbs-5](https://github.com/oelin/cbs-5).
+Due to the large size of our dataset, we store each example in compressed form and use chunking to support procedural download. The complete dataset is hosted on GitHub at [https://github.com/oelin/cbs-5](https://github.com/oelin/cbs-5).
 
 
 ## Training
