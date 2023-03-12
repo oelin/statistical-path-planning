@@ -99,7 +99,7 @@ Compared to deep neural networks, linear models tend to be far more explainable.
 
 ![](https://github.com/oelin/generative-path-planning/blob/main/images/features3.png)
 
-In these visualizations, light pixels represent strong positive weights, whereas dark pixels represent strong negative weights. The first image shows a strong positive correlation between an agent's decision to `Stay` and the presence of a goal within the center of their FOV. This makes intuitive sense as agents should never move after reaching their goal. Similarly, the second image shows a strong correlation between an agent's decision to move `North` and the presence of a goal above them. These visualizations can be created for any channel-action pair to understand *why* the models makes certain decisions.
+In these visualizations, light pixels represent strong positive weights, whereas dark pixels represent strong negative weights. The first image shows a strong positive correlation between an agent's decision to `Stay` and the presence of a goal within the center of their FOV. This makes intuitive sense as agents should never move after reaching their goal. Similarly, the second image shows a strong correlation between an agent's decision to move `North` and the presence of a goal above them. These visualizations can be created for any channel-action pair to understand *why* the model makes certain decisions.
 
 
 ## Conclusion
